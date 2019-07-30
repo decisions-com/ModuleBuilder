@@ -20,8 +20,8 @@ namespace ModuleBuilder
             Console.WriteLine("");
             Console.WriteLine("Enter the Name of your Module you wish to create");
             var requiredModuleName = Console.ReadLine();
-            BuildIt(requiredModuleName, true);
-
+            var doesntihaveabuildlocalation = BuildIt(requiredModuleName, true);
+            Console.WriteLine(doesntihaveabuildlocalation);
 
             string ModuleFolder = @"C:\DecisionsModuleBuilderTemp\" +requiredModuleName;
 
@@ -126,9 +126,9 @@ namespace ModuleBuilder
 
 
 
+            
 
-
-
+            Console.Read();
 
            
         }
@@ -174,7 +174,15 @@ namespace ModuleBuilder
             var exists = System.IO.Directory.Exists(repofullpath);
             
             System.IO.Directory.CreateDirectory(repofullpath);
-            Repository.Clone("https://github.com/decisions-com/decisions-mod-skeleton.git", repofullpath);
+            try
+            {
+                Repository.Clone("https://github.com/decisions-com/decisions-mod-skeleton.git", repofullpath);
+            }
+            catch (Exception ex2)
+            {
+
+                return ex2.Message;
+            }
 
    
 
@@ -182,7 +190,7 @@ namespace ModuleBuilder
 
 
 
-            return "done";
+            return "Build Done, its in "+ repofullpath;
         }
 
 
