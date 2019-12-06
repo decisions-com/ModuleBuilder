@@ -123,8 +123,10 @@ namespace ModuleBuilder
 
 
 
+            //copy the UpdateThirdpartyReferenceModule Tool to that folder. 
 
 
+            System.IO.File.Copy(@".\UpdateThirdPartyReferencesInModuleBuild.exe", ModuleFolder + "\\UpdateThirdPartyReferencesInModuleBuild.exe");
 
             
 
