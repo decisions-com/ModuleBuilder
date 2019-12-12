@@ -23,6 +23,14 @@ namespace ModuleBuilder
             var doesntihaveabuildlocalation = BuildIt(requiredModuleName, true);
             Console.WriteLine(doesntihaveabuildlocalation);
 
+
+            var checkifdirforDecisionsModuleBuilderTempExists = System.IO.Directory.Exists(@"C:\DecisionsModuleBuilderTemp");
+            if (checkifdirforDecisionsModuleBuilderTempExists == false)
+            {
+                System.IO.Directory.CreateDirectory(@"C:\DecisionsModuleBuilderTemp");
+            }
+
+
             string ModuleFolder = @"C:\DecisionsModuleBuilderTemp\" +requiredModuleName;
 
             //string[] allfiles = Directory.GetFiles(@"C:\DecisionsModuleBuilderTemp\A", "*.*", SearchOption.AllDirectories);
@@ -126,7 +134,7 @@ namespace ModuleBuilder
             //copy the UpdateThirdpartyReferenceModule Tool to that folder. 
 
 
-            System.IO.File.Copy(@".\UpdateThirdPartyReferencesInModuleBuild.exe", ModuleFolder + "\\UpdateThirdPartyReferencesInModuleBuild.exe");
+            System.IO.File.Copy(@".\UpdateThirdPartyReferencesInModuleBuild.exe", ModuleFolder + "\\UpdateThirdPartyReferencesInModuleBuild.exe", true) ;
 
             
 
